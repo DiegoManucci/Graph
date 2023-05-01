@@ -1,3 +1,8 @@
+Avaliação Parcial
+
+Diego Manucci Bizzotto - 836156
+Rafael Vaz da Costa Santos - 836724
+
 Funções do grafo
 
 O código tem por objetivo alcançar todas as funções definidas pela atividade, como identificar uma aresta adjacente,
