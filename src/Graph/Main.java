@@ -58,5 +58,27 @@ public class Main {
 		System.out.println("Intersection of G1 and G2:");
 		intersection.printVertexList();
 		intersection.printEdgeList();
+
+		//Teste BFS
+
+		Graph graph = new Graph();
+        graph.addVertex(1);
+        graph.addVertex(2);
+        graph.addVertex(3);
+        graph.addVertex(4);
+        graph.addVertex(5);
+
+        graph.addEdge(1, 1, 2);
+        graph.addEdge(2, 1, 3);
+        graph.addEdge(3, 2, 4);
+        graph.addEdge(4, 3, 4);
+        graph.addEdge(5, 4, 5);
+
+		System.out.println("TESTE BFS");
+
+        ArrayList<Vertex> bfsPath = graph.BFS(1, 5);
+        for (Vertex vertex : bfsPath) {
+            System.out.println(vertex.getValue());
+        }
 	}
 }

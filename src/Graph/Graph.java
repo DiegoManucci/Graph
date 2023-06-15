@@ -175,4 +175,46 @@ public class Graph {
 
 		return intersection;
 	}
+
+	public ArrayList<Vertex> BFS(Integer start, Integer end) {
+        ArrayList<Vertex> path = new ArrayList<>();
+        HashSet<Vertex> visited = new HashSet<>();
+        Vertex startVertex = findVertex(start);
+        Vertex endVertex = findVertex(end);
+
+        if (startVertex == null || endVertex == null) {
+            return path;
+        }
+
+        LinkedList<Vertex> queue = new LinkedList<>();
+        HashMap<Vertex, Vertex> parentMap = new HashMap<>();
+        queue.add(startVertex);
+        visited.add(startVertex);
+
+        while (!queue.isEmpty()) {
+            Vertex current = queue.poll();
+            if (current == endVertex) {
+                Vertex node = endVertex;
+                while (node != null) {
+                    path.add(node);
+                    node = parentMap.get(node);
+                }
+                Collections.reverse(path);
+                break;
+            }
+            for (Edge edge : edgeList) {
+                if (edge.getVertex1() == current && !visited.contains(edge.getVertex2())) {
+                    visited.add(edge.getVertex2());
+                    queue.add(edge.getVertex2());
+                    parentMap.put(edge.getVertex2(), current);
+                } else if (edge.getVertex2() == current && !visited.contains(edge.getVertex1())) {
+                    visited.add(edge.getVertex1());
+                    queue.add(edge.getVertex1());
+                    parentMap.put(edge.getVertex1(), current);
+                }
+            }
+        }
+
+        return path;
+    }
 }
